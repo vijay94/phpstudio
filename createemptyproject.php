@@ -1,0 +1,20 @@
+<?php
+if(isset($_GET["name"])){
+	session_start();
+	$projectname=$_GET["name"];
+	$_SESSION["project"]=$projectname;
+	$path='projects\\'.$_SESSION["mailid"].'\\'.$projectname;
+	mkdir($path,0777);
+	$imagepath=$path."\\image";
+	mkdir($imagepath,0777);
+	$jspath=$path."\\js";
+	mkdir($jspath,0777);
+	$csspath=$path."\\css";
+	mkdir($csspath,0777);
+	$indexpath=$path."\\index.php";
+	fopen($indexpath,"w");
+	header("location:index.php?open=$projectname");
+}else{
+	header("location:index.php");
+}
+?>
