@@ -9,7 +9,7 @@ session_start();
 <body>
 WELCOME 
 <?php
-echo $_SESSION['login_user'];
+echo $_SESSION['hello'];
 ?>
 </body>
 </html>

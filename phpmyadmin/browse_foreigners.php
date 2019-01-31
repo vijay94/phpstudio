@@ -6,9 +6,12 @@
  * @package PhpMyAdmin
  */
 
+use PhpMyAdmin\BrowseForeigners;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Util;
+
 require_once 'libraries/common.inc.php';
-require_once 'libraries/transformations.lib.php';
-require_once 'libraries/browse_foreigners.lib.php';
 
 /**
  * Sets globals from $_REQUEST
@@ -24,35 +27,46 @@ foreach ($request_params as $one_request_param) {
     }
 }
 
-PMA\libraries\Util::checkParameters(array('db', 'table', 'field'));
+Util::checkParameters(array('db', 'table', 'field'));
 
-$response = PMA\libraries\Response::getInstance();
+$response = Response::getInstance();
 $response->getFooter()->setMinimal();
 $header = $response->getHeader();
 $header->disableMenuAndConsole();
 $header->setBodyId('body_browse_foreigners');
 
+$relation = new Relation();
+
 /**
  * Displays the frame
  */
-
-$cfgRelation = PMA_getRelationsParam();
-$foreigners  = ($cfgRelation['relwork'] ? PMA_getForeigners($db, $table) : false);
-$foreign_limit = PMA_getForeignLimit(
+$foreigners = $relation->getForeigners($db, $table);
+$browseForeigners = new BrowseForeigners(
+    $GLOBALS['cfg']['LimitChars'],
+    $GLOBALS['cfg']['MaxRows'],
+    $GLOBALS['cfg']['RepeatCells'],
+    $GLOBALS['cfg']['ShowAll'],
+    $GLOBALS['pmaThemeImage']
+);
+$foreign_limit = $browseForeigners->getForeignLimit(
     isset($_REQUEST['foreign_showAll']) ? $_REQUEST['foreign_showAll'] : null
 );
 
-$foreignData = PMA_getForeignData(
+$foreignData = $relation->getForeignData(
     $foreigners, $_REQUEST['field'], true,
     isset($_REQUEST['foreign_filter'])
     ? $_REQUEST['foreign_filter']
     : '',
-    isset($foreign_limit) ? $foreign_limit : null
+    isset($foreign_limit) ? $foreign_limit : null,
+    true // for getting value in $foreignData['the_total']
 );
 
 // HTML output
-$html = PMA_getHtmlForRelationalFieldSelection(
-    $db, $table, $_REQUEST['field'], $foreignData,
+$html = $browseForeigners->getHtmlForRelationalFieldSelection(
+    $db,
+    $table,
+    $_REQUEST['field'],
+    $foreignData,
     isset($fieldkey) ? $fieldkey : null,
     isset($data) ? $data : null
 );

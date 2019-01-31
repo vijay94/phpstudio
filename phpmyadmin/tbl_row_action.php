@@ -6,12 +6,14 @@
  * @package PhpMyAdmin
  */
 
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Sql;
+use PhpMyAdmin\Url;
+
 /**
  *
  */
 require_once 'libraries/common.inc.php';
-require_once 'libraries/mysql_charsets.inc.php';
-require_once 'libraries/sql.lib.php';
 
 if (isset($_REQUEST['submit_mult'])) {
     $submit_mult = $_REQUEST['submit_mult'];
@@ -66,7 +68,7 @@ if (!empty($submit_mult)) {
         && (! isset($_REQUEST['rows_to_delete'])
         || ! is_array($_REQUEST['rows_to_delete']))
     ) {
-        $response = PMA\libraries\Response::getInstance();
+        $response = Response::getInstance();
         $response->setRequestStatus(false);
         $response->addJSON('message', __('No row selected.'));
     }
@@ -117,7 +119,7 @@ if (!empty($submit_mult)) {
     default:
         $action = 'tbl_row_action.php';
         $err_url = 'tbl_row_action.php'
-            . PMA_URL_getCommon($GLOBALS['url_params']);
+            . Url::getCommon($GLOBALS['url_params']);
         if (! isset($_REQUEST['mult_btn'])) {
             $original_sql_query = $sql_query;
             if (! empty($url_query)) {
@@ -127,7 +129,7 @@ if (!empty($submit_mult)) {
         include 'libraries/mult_submits.inc.php';
         $_url_params = $GLOBALS['url_params'];
         $_url_params['goto'] = 'tbl_sql.php';
-        $url_query = PMA_URL_getCommon($_url_params);
+        $url_query = Url::getCommon($_url_params);
 
 
         /**
@@ -150,7 +152,8 @@ if (!empty($submit_mult)) {
         }
 
         $active_page = 'sql.php';
-        PMA_executeQueryAndSendQueryResponse(
+        $sql = new Sql();
+        $sql->executeQueryAndSendQueryResponse(
             null, // analyzed_sql_results
             false, // is_gotofile
             $db, // db

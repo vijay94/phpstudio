@@ -1,26 +1,108 @@
-.black_overlay,.black_overlay1{
-     display: none;
+#accordion {
+     height: 90vh;
+}
+
+.pr{
+     position: relative;
+}
+
+.explorer {
+     width: 240px;
      position: absolute;
-     top: 0%;
-     left: 0%;
+     top: 0;
+     left: 15px;
+     z-index: 1000;
+     height: 9vh%;
+     background-color: #fff;
+}
+
+.pd-lt-250 {
+     padding-left: 250px;
+}
+
+.editor textarea{
+     width: 100%;
+     height: 80vh;
+     resize: none;
+}
+
+.pos-rel {
+     position: relative;
+     float: left;
      width: 100%;
      height: 100%;
-     background-color: black;
-     z-index:1001;
-     -moz-opacity: 0.8;
-     opacity:.80;
-     filter: alpha(opacity=80);
- }
- .white_content,.white_content1{
-     display: none;
+}
+
+.login-wrapper {
      position: absolute;
-     top: 25%;
-     left: 25%;
-     width: 50%;
-     height: 50%;
-     padding: 16px;
-     border: 16px solid #ADD8E6;
-     background-color: white;
-     z-index:1002;
-     overflow: auto;
- }
+     top: 50%;
+     transform: translateY(-50%);
+     left: 0;
+     right: 0;
+     display: block;
+     margin-right: auto;
+     margin-left: auto;
+     width: 400px;
+     text-align: center;
+}
+
+.input-large {
+     padding: 10px;
+     width: 100%;
+     margin-top: 10px;
+     border: 1px solid #656161;
+}
+
+.button-primary {
+     margin-top: 10px;
+     border: none;
+     background-color: #1171b5;
+     color: #fff;
+     cursor: pointer;
+     padding: 10px 15px;
+}
+
+body {
+     margin: 0px;
+     background-color: #efefef;
+}
+
+.toast {
+     position: fixed;
+     right: -200px;
+     top: 100px;
+     transition: all ease 0.3s;
+     color: #fff;
+     width: 200px;
+     padding: 10px;
+}
+
+.toast.show {
+     transition: all ease 0.3s;
+     right: 0px;
+}
+
+.toast#success{
+     background: #1B5E20;
+}
+
+.toast#error{
+     background: #D50000;
+}
+
+input, select {
+     padding: 10px 15px;
+     margin-top: 10px;
+     width: 100%;
+}
+
+.CodeMirror
+{
+  line-height:18px;
+}
+
+@media (min-width: 768px){
+     .navbar {
+          border-radius: 0px !important;
+     }     
+}
