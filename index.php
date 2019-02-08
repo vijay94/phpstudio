@@ -18,30 +18,32 @@ $path = "./projects/".$_SESSION["mailid"];
 	<link href="css/default.css" rel="stylesheet" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/context.css">
-	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span> 
-	      </button>
-	      <a class="navbar-brand" href="#">PHPStudio</a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+		  </button>
+		  <a class="navbar-brand" href="#">PHPStudio</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
 			<li class="dropdown">
-		        <a class="dropdown-toggle" href="javascript:void(0)" data-toggle="modal" data-target="#new-project">New Project</a>
-		    </li>
-		    <li>
-		    	<a href="phpmyadmin/" target="_blank">DataBase</a>
-		    </li>
-	      </ul>
-	      
-	    </div>
+				<a class="dropdown-toggle" href="javascript:void(0)" data-toggle="modal" data-target="#new-project">New Project</a>
+			</li>
+			<li>
+				<a href="phpmyadmin/" target="_blank">DataBase</a>
+			</li>
+			<li>
+					<a href="logout.php" id="logout">logout</a>
+			</li>
+		  </ul>
+		  
+		</div>
 	  </div>
 	</nav>
 	<div class="container-fluid pr">
@@ -93,57 +95,57 @@ $path = "./projects/".$_SESSION["mailid"];
 	</div>
 
 	<div class="modal fade" id="new-file" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Create New FIle</h4>
-	        </div>
-	        <div class="modal-body">
-	        	<form id="new-file-form" method="post" action="ajax/createFile.php">
-	        		<select  name="extension" required>
-	        			<option value="">Select Extension</option>
-	        			<option value="php">Php</option>
-	        			<option value="html">Html</option>
-	        			<option value="js">Js</option>
-	        			<option value="css">Css</option>
-	        		</select>
-	         		<input type="text" placeholder="File Name Without Extension" name="fileName" required>
-	         		<button type="submit" class="button-primary">Add</button>
-	        	</form>
-	        	
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">Create New FIle</h4>
+			</div>
+			<div class="modal-body">
+				<form id="new-file-form" method="post" action="ajax/createFile.php">
+					<select  name="extension" required>
+						<option value="">Select Extension</option>
+						<option value="php">Php</option>
+						<option value="html">Html</option>
+						<option value="js">Js</option>
+						<option value="css">Css</option>
+					</select>
+					<input type="text" placeholder="File Name Without Extension" name="fileName" required>
+					<button type="submit" class="button-primary">Add</button>
+				</form>
+				
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		  
+		</div>
 	</div>
 	<div class="modal fade" id="new-project" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title">Create New FIle</h4>
-	        </div>
-	        <div class="modal-body">
-	        	<form id="new-project-form" method="post" action="ajax/createProject.php">
-	         		<input type="text" placeholder="Project Name" name="projectName" required>
-	         		<button type="submit" class="button-primary">Add</button>
-	        	</form>
-	        	
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	      </div>
-	      
-	    </div>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">Create New FIle</h4>
+			</div>
+			<div class="modal-body">
+				<form id="new-project-form" method="post" action="ajax/createProject.php">
+					<input type="text" placeholder="Project Name" name="projectName" required>
+					<button type="submit" class="button-primary">Add</button>
+				</form>
+				
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		  
+		</div>
 	</div>
 </body>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
