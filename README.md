@@ -3,8 +3,12 @@
 PHP Studio is a simple online PHP Editor
 
 Use case:
-- Say you have
+- When you have to Run PHP in 50 Systems in a lab setup but dont want to install PHP in all the system then you can set up PHP-studio in one of the system and make it as a server.
 
+## How to Run?
+- Set up a web server preferably nginx 
+- Clone the project into the www directory.
+- Access it from the browser.
 
 ## Version
 
