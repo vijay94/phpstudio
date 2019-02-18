@@ -6,8 +6,11 @@ Use case:
 - When you have to Run PHP in 50 Systems in a lab setup but dont want to install PHP in all the system then you can set up PHP-studio in one of the system and make it as a server.
 
 ## How to Run?
-- Set up a web server preferably nginx 
+
+- Set up a web server preferably nginx [like here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04).
 - Clone the project into the www directory.
+- Create a Database and the import the sql file from the Repository.
+- Make appropriate changes to the connection.php file.
 - Access it from the browser.
 
 ## Version
