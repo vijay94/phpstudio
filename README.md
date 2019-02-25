@@ -25,8 +25,13 @@ MIT Licence
 - [jquery.js](https://github.com/daneden/animate.css)
 - [codemirror.js](https://github.com/codemirror/codemirror)
 - [jQuery contextMenu](http://swisnl.github.io/jQuery-contextMenu)
-### Basic usage
+### Screenshots
 
+#### Admin View
+![screenshot](https://user-images.githubusercontent.com/8709375/53353200-3a4d0500-394a-11e9-9914-255f46a61b32.png)
+
+#### User View
+![screenshot](https://user-images.githubusercontent.com/8709375/53353305-6cf6fd80-394a-11e9-8ca0-3f34bd55fd6d.png)
 
 ## Contribute
 
